@@ -109,3 +109,11 @@ class TokenStatus(str, Enum):
 
     enabled = "enabled"
     disabled = "disabled"
+
+
+class CreatedByType(str, Enum):
+
+    user = "User"
+    application = "Application"
+    managed_identity = "ManagedIdentity"
+    key = "Key"

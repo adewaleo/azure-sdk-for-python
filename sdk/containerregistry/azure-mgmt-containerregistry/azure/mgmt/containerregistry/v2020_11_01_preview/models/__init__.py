@@ -10,6 +10,7 @@
 # --------------------------------------------------------------------------
 
 try:
+    from ._models_py3 import ActivationProperties
     from ._models_py3 import ActiveDirectoryObject
     from ._models_py3 import Actor
     from ._models_py3 import AgentPool
@@ -23,6 +24,8 @@ try:
     from ._models_py3 import BaseImageTrigger
     from ._models_py3 import BaseImageTriggerUpdateParameters
     from ._models_py3 import CallbackConfig
+    from ._models_py3 import ConnectedRegistry
+    from ._models_py3 import ConnectedRegistryUpdateParameters
     from ._models_py3 import Credentials
     from ._models_py3 import CustomRegistryCredentials
     from ._models_py3 import DockerBuildRequest
@@ -57,12 +60,15 @@ try:
     from ._models_py3 import InnerErrorDescription
     from ._models_py3 import IPRule
     from ._models_py3 import KeyVaultProperties
+    from ._models_py3 import LoggingProperties
+    from ._models_py3 import LoginServerProperties
     from ._models_py3 import NetworkRuleSet
     from ._models_py3 import OperationDefinition
     from ._models_py3 import OperationDisplayDefinition
     from ._models_py3 import OperationMetricSpecificationDefinition
     from ._models_py3 import OperationServiceSpecificationDefinition
     from ._models_py3 import OverrideTaskStepProperties
+    from ._models_py3 import ParentProperties
     from ._models_py3 import PipelineRun
     from ._models_py3 import PipelineRunRequest
     from ._models_py3 import PipelineRunResponse
@@ -115,7 +121,10 @@ try:
     from ._models_py3 import SourceUpdateParameters
     from ._models_py3 import SourceUploadDefinition
     from ._models_py3 import Status
+    from ._models_py3 import StatusDetailProperties
     from ._models_py3 import StorageAccountProperties
+    from ._models_py3 import SyncProperties
+    from ._models_py3 import SyncUpdateProperties
     from ._models_py3 import SystemData
     from ._models_py3 import Target
     from ._models_py3 import Task
@@ -128,6 +137,8 @@ try:
     from ._models_py3 import TimerTrigger
     from ._models_py3 import TimerTriggerDescriptor
     from ._models_py3 import TimerTriggerUpdateParameters
+    from ._models_py3 import TlsCertificateProperties
+    from ._models_py3 import TlsProperties
     from ._models_py3 import Token
     from ._models_py3 import TokenCertificate
     from ._models_py3 import TokenCredentialsProperties
@@ -142,6 +153,7 @@ try:
     from ._models_py3 import WebhookCreateParameters
     from ._models_py3 import WebhookUpdateParameters
 except (SyntaxError, ImportError):
+    from ._models import ActivationProperties
     from ._models import ActiveDirectoryObject
     from ._models import Actor
     from ._models import AgentPool
@@ -155,6 +167,8 @@ except (SyntaxError, ImportError):
     from ._models import BaseImageTrigger
     from ._models import BaseImageTriggerUpdateParameters
     from ._models import CallbackConfig
+    from ._models import ConnectedRegistry
+    from ._models import ConnectedRegistryUpdateParameters
     from ._models import Credentials
     from ._models import CustomRegistryCredentials
     from ._models import DockerBuildRequest
@@ -189,12 +203,15 @@ except (SyntaxError, ImportError):
     from ._models import InnerErrorDescription
     from ._models import IPRule
     from ._models import KeyVaultProperties
+    from ._models import LoggingProperties
+    from ._models import LoginServerProperties
     from ._models import NetworkRuleSet
     from ._models import OperationDefinition
     from ._models import OperationDisplayDefinition
     from ._models import OperationMetricSpecificationDefinition
     from ._models import OperationServiceSpecificationDefinition
     from ._models import OverrideTaskStepProperties
+    from ._models import ParentProperties
     from ._models import PipelineRun
     from ._models import PipelineRunRequest
     from ._models import PipelineRunResponse
@@ -247,7 +264,10 @@ except (SyntaxError, ImportError):
     from ._models import SourceUpdateParameters
     from ._models import SourceUploadDefinition
     from ._models import Status
+    from ._models import StatusDetailProperties
     from ._models import StorageAccountProperties
+    from ._models import SyncProperties
+    from ._models import SyncUpdateProperties
     from ._models import SystemData
     from ._models import Target
     from ._models import Task
@@ -260,6 +280,8 @@ except (SyntaxError, ImportError):
     from ._models import TimerTrigger
     from ._models import TimerTriggerDescriptor
     from ._models import TimerTriggerUpdateParameters
+    from ._models import TlsCertificateProperties
+    from ._models import TlsProperties
     from ._models import Token
     from ._models import TokenCertificate
     from ._models import TokenCredentialsProperties
@@ -274,6 +296,7 @@ except (SyntaxError, ImportError):
     from ._models import WebhookCreateParameters
     from ._models import WebhookUpdateParameters
 from ._paged_models import AgentPoolPaged
+from ._paged_models import ConnectedRegistryPaged
 from ._paged_models import EventPaged
 from ._paged_models import ExportPipelinePaged
 from ._paged_models import ImportPipelinePaged
@@ -290,9 +313,17 @@ from ._paged_models import TaskRunPaged
 from ._paged_models import TokenPaged
 from ._paged_models import WebhookPaged
 from ._container_registry_management_client_enums import (
+    ProvisioningState,
+    ConnectedRegistryMode,
+    ConnectionState,
+    ActivationStatus,
+    TlsStatus,
+    CertificateType,
+    LogLevel,
+    AuditLogStatus,
+    CreatedByType,
     ResourceIdentityType,
     PipelineOptions,
-    ProvisioningState,
     ImportMode,
     PipelineSourceType,
     TriggerStatus,
@@ -308,11 +339,15 @@ from ._container_registry_management_client_enums import (
     TrustPolicyType,
     EncryptionStatus,
     PublicNetworkAccess,
+    NetworkRuleBypassOptions,
+    ZoneRedundancy,
     PasswordName,
     RegistryUsageUnit,
+    TokenCertificateName,
+    TokenPasswordName,
+    TokenStatus,
     WebhookStatus,
     WebhookAction,
-    CreatedByType,
     OS,
     RunStatus,
     RunType,
@@ -327,12 +362,10 @@ from ._container_registry_management_client_enums import (
     UpdateTriggerPayloadType,
     SourceRegistryLoginMode,
     SecretObjectType,
-    TokenCertificateName,
-    TokenPasswordName,
-    TokenStatus,
 )
 
 __all__ = [
+    'ActivationProperties',
     'ActiveDirectoryObject',
     'Actor',
     'AgentPool',
@@ -346,6 +379,8 @@ __all__ = [
     'BaseImageTrigger',
     'BaseImageTriggerUpdateParameters',
     'CallbackConfig',
+    'ConnectedRegistry',
+    'ConnectedRegistryUpdateParameters',
     'Credentials',
     'CustomRegistryCredentials',
     'DockerBuildRequest',
@@ -380,12 +415,15 @@ __all__ = [
     'InnerErrorDescription',
     'IPRule',
     'KeyVaultProperties',
+    'LoggingProperties',
+    'LoginServerProperties',
     'NetworkRuleSet',
     'OperationDefinition',
     'OperationDisplayDefinition',
     'OperationMetricSpecificationDefinition',
     'OperationServiceSpecificationDefinition',
     'OverrideTaskStepProperties',
+    'ParentProperties',
     'PipelineRun',
     'PipelineRunRequest',
     'PipelineRunResponse',
@@ -438,7 +476,10 @@ __all__ = [
     'SourceUpdateParameters',
     'SourceUploadDefinition',
     'Status',
+    'StatusDetailProperties',
     'StorageAccountProperties',
+    'SyncProperties',
+    'SyncUpdateProperties',
     'SystemData',
     'Target',
     'Task',
@@ -451,6 +492,8 @@ __all__ = [
     'TimerTrigger',
     'TimerTriggerDescriptor',
     'TimerTriggerUpdateParameters',
+    'TlsCertificateProperties',
+    'TlsProperties',
     'Token',
     'TokenCertificate',
     'TokenCredentialsProperties',
@@ -464,6 +507,7 @@ __all__ = [
     'Webhook',
     'WebhookCreateParameters',
     'WebhookUpdateParameters',
+    'ConnectedRegistryPaged',
     'ExportPipelinePaged',
     'RegistryPaged',
     'PrivateLinkResourcePaged',
@@ -472,17 +516,25 @@ __all__ = [
     'PipelineRunPaged',
     'PrivateEndpointConnectionPaged',
     'ReplicationPaged',
+    'ScopeMapPaged',
+    'TokenPaged',
     'WebhookPaged',
     'EventPaged',
     'AgentPoolPaged',
     'RunPaged',
     'TaskRunPaged',
     'TaskPaged',
-    'ScopeMapPaged',
-    'TokenPaged',
+    'ProvisioningState',
+    'ConnectedRegistryMode',
+    'ConnectionState',
+    'ActivationStatus',
+    'TlsStatus',
+    'CertificateType',
+    'LogLevel',
+    'AuditLogStatus',
+    'CreatedByType',
     'ResourceIdentityType',
     'PipelineOptions',
-    'ProvisioningState',
     'ImportMode',
     'PipelineSourceType',
     'TriggerStatus',
@@ -498,11 +550,15 @@ __all__ = [
     'TrustPolicyType',
     'EncryptionStatus',
     'PublicNetworkAccess',
+    'NetworkRuleBypassOptions',
+    'ZoneRedundancy',
     'PasswordName',
     'RegistryUsageUnit',
+    'TokenCertificateName',
+    'TokenPasswordName',
+    'TokenStatus',
     'WebhookStatus',
     'WebhookAction',
-    'CreatedByType',
     'OS',
     'RunStatus',
     'RunType',
@@ -517,7 +573,4 @@ __all__ = [
     'UpdateTriggerPayloadType',
     'SourceRegistryLoginMode',
     'SecretObjectType',
-    'TokenCertificateName',
-    'TokenPasswordName',
-    'TokenStatus',
 ]
