@@ -306,7 +306,7 @@ class ContainerRegistryManagementClient(MultiApiClientMixin, SDKClient):
             from .v2019_06_01_preview.operations import RegistriesOperations as OperationClass
         elif api_version == '2019-12-01-preview':
             from .v2019_12_01_preview.operations import RegistriesOperations as OperationClass
-        elif api_version == '2020-11-01-previews':
+        elif api_version == '2020-11-01-preview':
             from .v2020_11_01_preview.operations import RegistriesOperations as OperationClass
         else:
             raise NotImplementedError("APIVersion {} is not available".format(api_version))
@@ -342,7 +342,7 @@ class ContainerRegistryManagementClient(MultiApiClientMixin, SDKClient):
             from .v2019_06_01_preview.operations import ReplicationsOperations as OperationClass
         elif api_version == '2019-12-01-preview':
             from .v2019_12_01_preview.operations import ReplicationsOperations as OperationClass
-        elif api_version == '2020-11-01-previews':
+        elif api_version == '2020-11-01-preview':
             from .v2020_11_01_preview.operations import ReplicationsOperations as OperationClass
         else:
             raise NotImplementedError("APIVersion {} is not available".format(api_version))
